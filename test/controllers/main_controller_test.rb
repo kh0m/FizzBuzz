@@ -6,4 +6,9 @@ class MainControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should handle non-integers" do
+    get '/main/fizz_buzz.json', params: {number:"not a number!"}
+    assert_response(422)
+  end
+
 end
